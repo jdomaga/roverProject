@@ -1,28 +1,34 @@
 # mars-rover
 
-## Project setup
-```
-npm install
-```
+## Approach
+first, i like to break down requirements into a simple overview of whats needed:
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Summary: a program which takes in the size of a grid, then uses a start location along with a
+list of moves to determine the endpoint of the path. the system should handle erroneous data in a graceful way.
+command line can be used as the interface.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+next, if this was a business scenario i would list assumptions
+1) if the start point is off the grid, the rover doesnt land, and we show an error
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+finally i would brainstorm some other options we could take, or other extensions that could be useful in the scenario:
 
+other options:
+1) given a topography of the grid, we could find the highest point of the grid and land the rover there, or navigate there
+since we want a picture of the surface. ( ie: get a birds eye view)
+
+extensions:
+1) instead of returning the endpoint, we could use the start and end as inputs and determine the shortest path
+2) we may have impassable terrain, so a different way to route to an endpoint would be useful
+3) if this program is useful for space travel, it could also be used for underwater submersibles ( and this would also provide a good test case for the rover in the real world)
+4) if we are trying to map out the area, we could input the range of the camera, and return a grid of what areas will be mapped given the provided directions
+5) we could also determine the shortest path which maps the entire grid, including impassable terrain( a modified DFS with weights and range)
+
+misc:
+- validate negative points, off grid points, and letters that arent part of our system
+- what if there are more directions later? like going up, etc?
+- validate directions and input path to make sure its part of enum
+- validate that input is right size (ie: all parts given)
 
 Mars Rover Code Challenge
 =========================
